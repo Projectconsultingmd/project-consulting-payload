@@ -4,13 +4,7 @@
 import type { ElementFormatType, TextFormatType } from 'lexical'
 import type { TextDetailType, TextModeType } from 'lexical/nodes/LexicalTextNode'
 
-/**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
+
 
 // DOM
 export const DOM_ELEMENT_TYPE = 1
