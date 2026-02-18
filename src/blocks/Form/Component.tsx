@@ -139,7 +139,7 @@ export const FormBlock: React.FC<
         {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
         {!hasSubmitted && (
           <form id={formID} onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col md:flex-row md:flex-wrap gap-4">
               {formFromProps &&
                 formFromProps.fields &&
                 formFromProps.fields?.map((field, index) => {
@@ -164,11 +164,17 @@ export const FormBlock: React.FC<
                     return (
                       <div 
                         key={index}
-                        className="min-w-0"
+                        className="min-w-0 w-full md:w-auto"
                         style={{ 
-                          flexBasis,
-                          flexGrow: width === 100 ? 1 : 0,
-                          flexShrink: 0,
+                          // On md+ screens, flex-basis controls width when container is flex-row
+                          ...(width === 100 ? {
+                            flexBasis: '100%',
+                            flexGrow: 1,
+                          } : {
+                            flexBasis: `calc(${width}% - 0.5rem)`,
+                            flexGrow: 0,
+                            flexShrink: 0,
+                          })
                         }}
                       >
                         <Field

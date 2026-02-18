@@ -19,7 +19,14 @@ export function FooterWrapper({ contactForm, contactUsTitle, locale }: FooterWra
   useEffect(() => {
     const checkPage = async () => {
       try {
-        // Extract slug from pathname (e.g., /ro/news -> news, /ro -> home)
+        const isPostPage = pathname.includes('/posts/')
+        
+        if (isPostPage) {
+          setShowForm(true)
+          setLoading(false)
+          return
+        }
+
         const pathParts = pathname.split('/').filter(Boolean)
         const slug = pathParts[pathParts.length - 1] || 'home'
 
@@ -44,7 +51,7 @@ export function FooterWrapper({ contactForm, contactUsTitle, locale }: FooterWra
   }
 
   return (
-    <div className="py-16 px-8">
+    <div className="py-8 md:py-16 md:px-8">
       <div className="container mx-auto max-w-2xl">
         {/* Title */}
         {contactUsTitle && (

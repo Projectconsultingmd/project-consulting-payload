@@ -76,9 +76,9 @@ export async function Footer({ locale }: { locale: TypedLocale }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Logo + Social Media */}
           <div className="flex flex-col gap-10">
-            {logo && <Logo resource={logo} size="xl" />}
+            {logo && <Logo resource={logo} size="2xl" />}
             {socialMedia && (
-              <div className="flex gap-4 text-white md:justify-center">
+              <div className="flex gap-4 text-white lg:justify-center">
                 {socialMedia.facebook && (
                   <a
                     href={socialMedia.facebook}
